@@ -1,0 +1,37 @@
+<<dd_version: 2>>
+
+Analyzing high blood pressure
+=============================
+
+We use data from the Second National Health
+
+~~~~
+<<dd_do:quietly>>
+webuse nhanes2, clear
+<</dd_do>>
+~~~~
+
+## Logistic regression results
+
+We fit a logistic regression model of high
+
+~~~~
+<<dd_do>>
+logistic highbp weight agegrp##sex, nopvalues vsquish
+<</dd_do>>
+~~~~
+
+##Interaction plot
+
+Below we have a figura about interaction between Age and Sex
+
+~~~~
+<<dd_do:quietly>>
+margins agegrp##sex
+marginsplot, title (Age Group and Sex Interaction) ///
+		ytitle(Expected Probability of High Blood Pressure)
+<</dd_do>>
+~~~~
+
+<<dd_graph: saving("interaction.png") replace height(400)>>
+
