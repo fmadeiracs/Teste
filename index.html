@@ -1,29 +1,39 @@
-<style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; max-width: 800px; color: #333; }
-    pre { font-family: 'Courier New', Courier, monospace; white-space: pre; background: #f8f9fa; padding: 15px; border-left: 5px solid #0073e6; overflow-x: auto; font-size: 13px; line-height: 1.2; }
-    h1 { color: #004080; border-bottom: 2px solid #004080; padding-bottom: 10px; }
-    h2 { color: #0073e6; margin-top: 30px; }
-    img { max-width: 100%; height: auto; margin-top: 15px; border: 1px solid #ddd; border-radius: 4px; }
-</style>
-<h1><a href="#relatório-de-análise-de-dados" id="relatório-de-análise-de-dados">Relatório de Análise de Dados</a></h1>
-<p>Este é um exemplo de relatório automatizado gerado a partir do Stata.</p>
-<h2><a href="#análise-descritiva" id="análise-descritiva">Análise Descritiva</a></h2>
-<p>Abaixo estão as estatísticas descritivas da base de dados de automóveis:</p>
-<p>. sysuse auto, clear (1978 automobile data)</p>
-<p>. summarize price mpg weight</p>
-<pre><code>Variable |        Obs        Mean    Std. dev.       Min        Max
+<h1><a href="#analyzing-high-blood-pressure" id="analyzing-high-blood-pressure">Analyzing high blood pressure</a></h1>
+<p>We use data from the Second National Health</p>
+<pre><code></code></pre>
+<h2><a href="#logistic-regression-results" id="logistic-regression-results">Logistic regression results</a></h2>
+<p>We fit a logistic regression model of high</p>
+<pre><code>. logistic highbp weight agegrp##sex, nopvalues vsquish
+
+Logistic regression                                    Number of obs =  10,351
+                                                       LR chi2(12)   = 2376.78
+                                                       Prob &gt; chi2   =  0.0000
+Log likelihood = -5862.3774                            Pseudo R2     =  0.1685
+
+---------------------------------------------------------------
+       highbp | Odds ratio   Std. err.     [95% conf. interval]
+--------------+------------------------------------------------
+       weight |   1.043864   .0017778      1.040385    1.047354
+       agegrp |
+       30–39  |   1.514186   .1585328      1.233275    1.859082
+       40–49  |   1.931504   .2131303       1.55586    2.397843
+       50–59  |   3.566454   .3957162      2.869402    4.432837
+       60–69  |   4.249484    .385805      3.556778    5.077099
+         70+  |   7.077616   .8911295      5.529856    9.058582
+          sex |
+      Female  |   .4292923   .0554164      .3333292    .5528826
+   agegrp#sex |
+30–39#Female  |   1.494007   .2615056      1.060135    2.105444
+40–49#Female  |   2.649714   .4661947      1.876883    3.740767
+50–59#Female  |   2.863595   .4966853      2.038319    4.023008
+60–69#Female  |   3.448893   .5183538      2.568904    4.630327
+  70+#Female  |    3.24079   .6147421      2.234536    4.700179
+        _cons |   .0125581    .001905      .0093283    .0169062
+---------------------------------------------------------------
+Note: _cons estimates baseline odds.
+
 </code></pre>
-<p>&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; price |         74    6165.257    2949.496       3291      15906 mpg |         74     21.2973    5.785503         12         41 weight |         74    3019.459    777.1936       1760       4840</p>
-<h2><a href="#modelo-de-regressão" id="modelo-de-regressão">Modelo de Regressão</a></h2>
-<p>Abaixo ajustamos uma regression linear para prever o preço do veículo:</p>
-<p>. regress price mpg weight</p>
-<pre><code>  Source |       SS           df       MS      Number of obs   =        74
-</code></pre>
-<p>&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-   F(2, 71)        =     14.74 Model |   186321280         2  93160639.9   Prob &gt; F        =    0.0000 Residual |   448744116        71  6320339.67   R-squared       =    0.2934 &mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-   Adj R-squared   =    0.2735 Total |   635065396        73  8699525.97   Root MSE        =      2514</p>
-<hr />
-<pre><code>   price | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
-</code></pre>
-<h2><a href="#-mpg-4951222-8615604-057-0567-2213025-122278weight-1746559-6413538-272-0008-467736-3025382-cons-1946069-359705-054-0590-5226245-9118382" id="-mpg-4951222-8615604-057-0567-2213025-122278weight-1746559-6413538-272-0008-467736-3025382-cons-1946069-359705-054-0590-5226245-9118382">&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- mpg |  -49.51222   86.15604    -0.57   0.567    -221.3025     122.278 weight |   1.746559   .6413538     2.72   0.008      .467736    3.025382 _cons |   1946.069    3597.05     0.54   0.590    -5226.245    9118.382</a></h2>
-<h2><a href="#gráfico-de-dispersão" id="gráfico-de-dispersão">Gráfico de Dispersão</a></h2>
-<p>Abaixo vemos a relação visual entre o peso do veículo e o seu preço de mercado:</p>
-<p><img src="grafico1.png" alt="Gráfico de Dispersão"></p>
+<h2><a href="#interaction-plot" id="interaction-plot">Interaction plot</a></h2>
+<p>Below we have a figura about interaction between Age and Sex</p>
+<pre><code></code></pre>
+<p><img src="interaction.png" height="400" ></p>
