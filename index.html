@@ -1,0 +1,21 @@
+<h1><a href="#relatório-de-análise-de-dados" id="relatório-de-análise-de-dados">Relatório de Análise de Dados</a></h1>
+<p>Este é um exemplo de relatório automatizado gerado a partir do Stata.</p>
+<h2><a href="#análise-descritiva" id="análise-descritiva">Análise Descritiva</a></h2>
+<p>Abaixo estão as estatísticas descritivas da base de dados de automóveis:</p>
+<p>. sysuse auto, clear (1978 automobile data)</p>
+<p>. summarize price mpg weight</p>
+<pre><code>Variable |        Obs        Mean    Std. dev.       Min        Max
+</code></pre>
+<p>&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; price |         74    6165.257    2949.496       3291      15906 mpg |         74     21.2973    5.785503         12         41 weight |         74    3019.459    777.1936       1760       4840</p>
+<h2><a href="#modelo-de-regressão" id="modelo-de-regressão">Modelo de Regressão</a></h2>
+<p>Abaixo ajustamos uma regressão linear para prever o preço do veículo:</p>
+<p>. regress price mpg weight</p>
+<pre><code>  Source |       SS           df       MS      Number of obs   =        74
+</code></pre>
+<p>&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-   F(2, 71)        =     14.74 Model |   186321280         2  93160639.9   Prob &gt; F        =    0.0000 Residual |   448744116        71  6320339.67   R-squared       =    0.2934 &mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-   Adj R-squared   =    0.2735 Total |   635065396        73  8699525.97   Root MSE        =      2514</p>
+<hr />
+<pre><code>   price | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
+</code></pre>
+<h2><a href="#-mpg-4951222-8615604-057-0567-2213025-122278weight-1746559-6413538-272-0008-467736-3025382-cons-1946069-359705-054-0590-5226245-9118382" id="-mpg-4951222-8615604-057-0567-2213025-122278weight-1746559-6413538-272-0008-467736-3025382-cons-1946069-359705-054-0590-5226245-9118382">&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- mpg |  -49.51222   86.15604    -0.57   0.567    -221.3025     122.278 weight |   1.746559   .6413538     2.72   0.008      .467736    3.025382 _cons |   1946.069    3597.05     0.54   0.590    -5226.245    9118.382</a></h2>
+<h2><a href="#gráfico-de-dispersão" id="gráfico-de-dispersão">Gráfico de Dispersão</a></h2>
+<p>Abaixo vemos a relação entre peso e consumo:</p>
