@@ -1,0 +1,28 @@
+# Relatório de Análise de Dados
+Este é um exemplo de relatório automatizado gerado a partir do Stata.
+
+## Análise Descritiva
+Abaixo estão as estatísticas descritivas da base de dados de automóveis:
+
+<<dd_do>>
+sysuse auto, clear
+summarize price mpg weight
+<</dd_do>>
+
+## Modelo de Regressão
+Abaixo ajustamos uma regressão linear para prever o preço do veículo:
+
+<<dd_do>>
+regress price mpg weight
+<</dd_do>>
+
+
+## Gráfico de Dispersão
+Abaixo vemos a relação entre peso e consumo:
+
+<<dd_do: quietly>>
+scatter price weight
+graph export grafico1.png, replace
+<</dd_do>>
+
+<<dd_graph: saving("grafico1.png") alt("Preço vs Peso")>>
